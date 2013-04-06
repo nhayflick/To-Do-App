@@ -1,0 +1,54 @@
+<%= form_for(item) do |f|%>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+
+  <%= f.label :completed, :Completed, :value => :true %>
+  <%= f.radio_button :completed, :true %>
+  <br>
+
+  <%= f.label :completed, :Unfinished,  :value => :false%>
+  <%= f.radio_button :completed, :false %>
+  <br>
+
+  <%= f.collection_select :project_id, Project.all, :id, :name %>
+  <br>
+
+  <%= f.submit %>
+<% end %>
+
+<!--
+<form action="http://localhost:3000/items" method="post">
+  <label for="item_title">Name</label>
+  <input type="text" name="item[titles]" id="item_title">
+  <br>
+
+  <label for="item_description">Description</label>
+  <input type="textarea" name="item[description]" id="item_description">
+  <br>
+
+  <input type="radio" name="item[completed]" id="item_completed_true" value="true">
+  <label for="item_completed_true">Completed</label>
+  <br>
+
+  <input type="radio" name="item[completed]" id="item_completed_false" value="false">
+  <label for="item_completed_false">Unfinished</label>
+  <br>
+  <br>
+  <label for="item_project_id"> Project: </label>
+
+  <select name="item[project_id]">
+    <option value="1">Project 1</option>
+    <option value="2">Project 2</option>
+
+  </select>
+  <input type="submit" value="Submit">
+  <br> 
+</form>
+->>
+

@@ -1,0 +1,12 @@
+<h1> <%= @user.name %> </h1>
+
+<% if @user.teams.empty? %>
+  You haven't joined any teams yet!
+<% else %>
+  <h4> Teams: </h4>
+  <ul>
+  <% @user.teams.each do |team| %>
+    <li><%= link_to team.name, team_url(team)%> </li>
+  <% end %>
+<% end%>
+</ul>

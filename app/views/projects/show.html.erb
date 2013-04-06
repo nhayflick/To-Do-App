@@ -1,0 +1,14 @@
+<h1> <%= @project.name %> </h1>
+<h3> <%= @project.description %> </h3>
+<h3> <%= link_to @project.team.name, team_url(@project.team)%> </h3>
+<ul>
+<% if @project.items.empty? %>
+  Add a To Do item to your project to get started!
+<% else %>
+  <h4> ToDo: </h4>
+  <% @project.items.each do |item| %>
+    <li><%= link_to item.title, item_url(item)%>
+    <i><%= status(item) %></i> </li>
+  <% end %>
+<% end%>
+</ul>

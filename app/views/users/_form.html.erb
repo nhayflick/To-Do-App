@@ -1,0 +1,40 @@
+<%= form_for(user) do |f| %>
+  <p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <% Team.all.each do |team| %>
+    <%=
+      check_box_tag(
+        "user[team_ids][]",
+        team.id,
+        user.team_ids.include?(team.id),
+        :id => "user_team_ids_#{team.id}"
+        )
+        %>
+
+        <%= label_tag "user_team_ids_#{team.id}", team.name %>
+        <br>
+  <%end%>
+  </p>
+  <%= f.submit %>
+<% end %>
+
+<!--
+<form action="http://local_host:3000/:items" method="post">
+  <label for="user_name">Name</label>
+  <input type="text" name="user[names]" id="user_name">
+
+  <% Team.all.each do |team| %>
+    <%='<label> <input type="checkbox" name="user[team_ids][]" id="user_team_ids_#{team.id}">'.html_safe +
+    team.name + 
+    '</label>'.html_safe %>
+    <br>
+     
+  <%end%>
+
+  <input type="submit">
+
+</form>
+-->

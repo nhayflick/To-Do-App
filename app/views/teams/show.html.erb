@@ -1,0 +1,15 @@
+<h1><%= @team.name %></h1>
+
+<% if @team.projects.empty? %>
+  This team has no projects right now.
+<% else %>
+  <h4> Projects: </h4>
+  <% @team.projects.each do |project| %>
+    <li><%= link_to project.name, project_url(project)%>
+    <i><%= Item.where(:completed => true).find_all_by_project_id(project.id).count%>/<%= Item.find_all_by_project_id(project.id).count%> Tasks Complete</i> </li>
+  <% end %>
+<% end%>
+
+<%= link_to "Assign this team a project", new_team_project_url(@team) %>
+
+</ul>

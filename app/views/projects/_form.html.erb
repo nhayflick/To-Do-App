@@ -1,0 +1,20 @@
+<%= form_for(project) do |f|%>
+
+  <p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  </p>
+
+  <p>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  </p>
+
+  <p>Assign this project to a team:
+  <%= f.collection_select :team_id, Team.all, :id, :name, :selected => selected %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

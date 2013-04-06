@@ -1,0 +1,13 @@
+<h1> Projects </h1>
+
+<ul>
+<% @projects.each do |project| %>
+
+  <li>
+    <%= link_to project.name, project_url(project) %>
+    <i><%= Item.where(:completed => true).find_all_by_project_id(project.id).count%> out of <%= Item.find_all_by_project_id(project.id).count%> Tasks Complete</i>
+  </li>
+
+  <% end %>
+</ul>
+<p><%= link_to "Create a new project", new_project_url %></p>
